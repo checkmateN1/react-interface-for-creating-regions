@@ -1,0 +1,93 @@
+@import './variables';
+
+@font-face {
+  font-family: "SourceSansPro-Regular";
+  src: url("fonts/SourceSansPro-Regular.otf.woff2") format("woff2"),
+  url('fonts/SourceSansPro-Regular.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceSansPro-Bold";
+  src: url("fonts/SourceSansPro-Bold.otf.woff2") format("woff2"),
+  url('fonts/SourceSansPro-Bold.ttf') format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass-semibold";
+  src: url("./fonts/overpass-semibold.woff2") format("woff2"),
+  url('fonts/overpass-semibold.ttf') format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "SourceSansPro-Regular";
+  margin: 0 auto;
+  padding: 0 15px;
+  cursor: default;
+  max-width: $max-page-width;
+  min-width: $min-page-width;
+
+  a {
+    text-decoration: none;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0 0 0 0);
+  }
+
+  .button {
+    text-decoration: none;
+    border-radius: 3px;
+    background: $primary;
+    transition: 0.3s;
+    border: none;
+
+    &:hover { background: $primary-hover; }
+
+    span {
+      font-family: SourceSansPro-Bold;
+      font-weight: 700;
+      font-size: 20px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+@media (max-width: 1344px) {
+  body {
+    padding: 0 calc(47px - (100% - 1024px) / 10);     // down to 1024px
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding: 0 calc(47px - (1024px - 100%) / 11.13);      // down to 768px
+  }
+}
+
+@media (max-width: $tablet-width) {
+  body {
+    padding: 0 calc(24px - (768px - 100%) / 49.7778);      // down to 320px
+  }
+}
+
+
