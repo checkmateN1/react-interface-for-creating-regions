@@ -18,9 +18,9 @@ class Pokerroom extends Component {
             onChange={this.updateRoom}
         >
           <option value="0" disabled hidden>Select room</option>
-          <option value="1">Pokerstars</option>
-          <option value="2">Patypoker</option>
-          <option value="3">Winamax</option>
+          <option value="Pokerstars">Pokerstars</option>
+          <option value="Patypoker">Patypoker</option>
+          <option value="Winamax">Winamax</option>
         </select>
     );
   }

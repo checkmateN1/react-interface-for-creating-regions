@@ -1,0 +1,29 @@
+.players-list {
+  list-style: none;
+  position: absolute;
+  left: 10px;
+  top: 630px;
+  color: #ef6c00;
+  padding: 0;
+
+  li {
+    cursor: pointer;
+
+    &:hover {
+      color: #a94c00;
+    }
+
+    &.active {
+      color: aliceblue;
+    }
+  }
+}
+
+.table-list {
+  list-style: none;
+  position: absolute;
+  left: 750px;
+  top: 630px;
+  color: #ef6c00;
+  padding: 0;
+}

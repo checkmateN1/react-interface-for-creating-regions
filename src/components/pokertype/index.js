@@ -20,10 +20,11 @@ class Pokertype extends Component {
             onChange={this.updateGameType}
         >
           <option value="0" disabled hidden>Select poker type</option>
-          <option value="1">Spin&Go</option>
-          <option value="2">Cash</option>
-          <option value="3">HA</option>
-          <option value="4">MTT</option>
+          <option value="Spin&Go">Spin&Go</option>
+          <option value="Cash 6max">Cash 6max</option>
+          <option value="Cash 9max">Cash 9max</option>
+          <option value="HA">HA</option>
+          <option value="MTT">MTT</option>
         </select>
     );
   }

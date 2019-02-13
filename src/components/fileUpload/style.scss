@@ -1,7 +1,7 @@
 @import '../../sass/variables';
 
 .upload-wrapper {
-  width: 30%;
+  width: 400px;
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -13,7 +13,7 @@
 
   .custom-file-upload {
     display: inline-block;
-    margin-left: 20px;
+    margin: 0 20px;
     flex-grow: 1;
     border: 1px solid #ccc;
     padding: 6px 12px;

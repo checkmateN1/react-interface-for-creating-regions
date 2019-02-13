@@ -26,8 +26,6 @@ class FileUpload extends Component {
     img.src = _URL.createObjectURL(input.files[0]);
     if ((input.files[0])) {
       img.onload = () => {
-        // alert(img.width);
-        // alert(img.height);
 
         this.setState({
           fileName: '',
@@ -49,6 +47,21 @@ class FileUpload extends Component {
     }
   };
 
+  loadDefaultPic = () => {
+    let el = document.getElementById('upload-wrapper');
+    let img = new Image();
+
+    img.src = `img/${this.props.imgName}.png`;
+    img.onload = () => {
+      el.style.backgroundImage = `url(${img.src})`;
+      el.style.position = 'absolute';
+      el.style.width = `${img.width}px`;
+      el.style.height = `${img.height}px`;
+      el.style.top = '50px';
+      el.style.left = '10px';
+    };
+  };
+
   render() {
 
     return (
@@ -67,6 +80,10 @@ class FileUpload extends Component {
               onChange={this.fileSelectedHandler}
               accept='.jpg, .jpeg, .png'
           />
+          <button
+              onClick={this.loadDefaultPic}
+              style={this.props.isReady ? {display: 'block'} : {display: 'none'}}
+          >Load default table img</button>
         </div>
     );
   }
