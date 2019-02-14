@@ -28,11 +28,13 @@
 
 body {
   font-family: "SourceSansPro-Regular";
-  margin: 0 auto;
-  padding: 0 15px;
+  margin: 0;
+  padding: 0;
   cursor: default;
-  max-width: $max-page-width;
-  min-width: $min-page-width;
+
+  ul {
+    list-style: none;
+  }
 
   a {
     text-decoration: none;
@@ -69,24 +71,6 @@ body {
       display: inline-block;
       margin-bottom: 2px;
     }
-  }
-}
-
-@media (max-width: 1344px) {
-  body {
-    padding: 0 calc(47px - (100% - 1024px) / 10);     // down to 1024px
-  }
-}
-
-@media (max-width: 1024px) {
-  body {
-    padding: 0 calc(47px - (1024px - 100%) / 11.13);      // down to 768px
-  }
-}
-
-@media (max-width: $tablet-width) {
-  body {
-    padding: 0 calc(24px - (768px - 100%) / 49.7778);      // down to 320px
   }
 }
 

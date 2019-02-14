@@ -46,6 +46,7 @@ class Rooms extends Component {
   };
   setPhoto = (photo) => {this.setState({photo})};
 
+
   render() {
     const { selectedRoom, gameType, payersCount } = this.state;
     const isReady = selectedRoom && gameType;
@@ -62,7 +63,7 @@ class Rooms extends Component {
           />
           <div id='upload-wrapper'></div>
         </div>
-        <Regions payersCount={payersCount}/>
+        {isReady ? <Regions payersCount={payersCount}/> : null}
       </>
     );
   }

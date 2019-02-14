@@ -1,29 +1,40 @@
-.players-list {
-  list-style: none;
-  position: absolute;
-  left: 10px;
-  top: 630px;
-  color: #ef6c00;
-  padding: 0;
+.all-regions {
 
-  li {
-    cursor: pointer;
+  ul {
+    list-style: none;
+    position: absolute;
+    left: 750px;
+    top: 130px;
+    color: #ef6c00;
+    padding: 0;
 
-    &:hover {
-      color: #a94c00;
+    &.regions-menu {
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+      top: 85px;
+      color: #2841da;
+
+      li:hover {
+        color: #2334bc;
+      }
     }
 
-    &.active {
-      color: aliceblue;
+    li {
+      cursor: pointer;
+
+      &:hover {
+        color: #a94c00;
+      }
+
+      &.active {
+        color: aliceblue;
+
+        &:hover {
+          color: #d2dae1;
+        }
+      }
     }
   }
 }
 
-.table-list {
-  list-style: none;
-  position: absolute;
-  left: 750px;
-  top: 630px;
-  color: #ef6c00;
-  padding: 0;
-}
