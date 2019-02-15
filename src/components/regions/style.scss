@@ -1,5 +1,11 @@
 .all-regions {
 
+  .recognitionType {
+    position: absolute;
+    top: 200px;
+    left: 1000px;
+  }
+
   ul {
     list-style: none;
     position: absolute;
@@ -20,8 +26,19 @@
       }
     }
 
+    &.playerRegions {
+      left: 850px;
+    }
+
     li {
       cursor: pointer;
+      position: relative;
+
+      select {
+        position: absolute;
+        left: 100px;
+        top: 0;
+      }
 
       &:hover {
         color: #a94c00;

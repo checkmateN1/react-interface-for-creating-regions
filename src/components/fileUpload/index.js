@@ -26,17 +26,14 @@ class FileUpload extends Component {
     img.src = _URL.createObjectURL(input.files[0]);
     if ((input.files[0])) {
       img.onload = () => {
-
-        this.setState({
-          fileName: '',
-          imgSrc: '',
-        });
-
-        this.props.setPhoto(input.files[0]);
+        this.props.setPhoto(input.files[0].name);
+        this.props.setWidth(img.width);
+        this.props.setHeight(img.height);
         this.setState({
           fileName: input.files[0].name,
           imgSrc: img.src,
         });
+
         el.style.backgroundImage = `url(${img.src})`;
         el.style.position = 'absolute';
         el.style.width = `${img.width}px`;
@@ -44,6 +41,11 @@ class FileUpload extends Component {
         el.style.top = '50px';
         el.style.left = '10px';
       };
+    } else {
+      this.setState({
+        fileName: '',
+        imgSrc: '',
+      });
     }
   };
 
@@ -59,6 +61,10 @@ class FileUpload extends Component {
       el.style.height = `${img.height}px`;
       el.style.top = '50px';
       el.style.left = '10px';
+
+      this.props.setPhoto(`${this.props.imgName}.png`);
+      this.props.setWidth(img.width);
+      this.props.setHeight(img.height);
     };
   };
 

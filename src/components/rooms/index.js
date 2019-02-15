@@ -19,6 +19,8 @@ class Rooms extends Component {
     gameType: '',
     payersCount: 0,
     photo: '',
+    width: '',
+    height: '',
   };
 
   setSelectedRoom = (selectedRoom) => {this.setState({selectedRoom})};
@@ -45,10 +47,12 @@ class Rooms extends Component {
     this.setState({gameType})
   };
   setPhoto = (photo) => {this.setState({photo})};
+  setWidth = (width) => {this.setState({width})};
+  setHeight = (height) => {this.setState({height})};
 
 
   render() {
-    const { selectedRoom, gameType, payersCount } = this.state;
+    const { selectedRoom, gameType, payersCount, photo } = this.state;
     const isReady = selectedRoom && gameType;
 
     return (
@@ -59,11 +63,13 @@ class Rooms extends Component {
           <FileUpload
               isReady={isReady}
               setPhoto={this.setPhoto}
+              setWidth={this.setWidth}
+              setHeight={this.setHeight}
               imgName={selectedRoom + '_' + gameType}
           />
           <div id='upload-wrapper'></div>
         </div>
-        {isReady ? <Regions payersCount={payersCount}/> : null}
+        {isReady && photo ? <Regions {...this.state} /> : null}
       </>
     );
   }
