@@ -67,9 +67,10 @@ class Rooms extends Component {
               setHeight={this.setHeight}
               imgName={selectedRoom + '_' + gameType}
           />
-          <div id='upload-wrapper'></div>
+          <div id='upload-wrapper'>
+            {isReady && photo ? <Regions {...this.state} /> : null}
+          </div>
         </div>
-        {isReady && photo ? <Regions {...this.state} /> : null}
       </>
     );
   }

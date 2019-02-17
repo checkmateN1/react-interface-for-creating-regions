@@ -1,0 +1,87 @@
+.MovementInterface {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 440px;
+  height: 80px;
+  font-size: 18px;
+  position: absolute;
+  top: 540px;
+
+  .region-id {
+    width: 183px;
+  }
+
+  fieldset {
+    width: 137px;
+    padding-right: 0;
+    padding-left: 15px;
+
+    legend {
+      color: #ef6c00;
+      padding: 0 8px;
+    }
+
+    .region-move {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & > div {
+        width: 55px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .move-y {
+        flex-direction: column;
+        width: 40px;
+
+        #move-up {
+          transform: rotate(-90deg);
+          margin-bottom: 10px;
+        }
+        #move-down {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    .region-resize {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 10px;
+
+      .resize-x {
+        margin-right: 7px;
+
+        button {
+          width: 36px;
+        }
+
+        #enlarge-x {
+          margin-bottom: 10px;
+        }
+      }
+
+      .resize-y {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+          width: 36px;
+          height: 33px;
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    button {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+  }
+}

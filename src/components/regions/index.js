@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 // Instruments
 import './style.scss';
 
+//Components
+import MovementInterface from '../movementInterface';
+
+
 class Regions extends Component {
 
   state = {
@@ -14,7 +18,7 @@ class Regions extends Component {
     wasCreated: false,
   };
 
-  static getDerivedStateFromProps(nextProps, prevState){
+  static getDerivedStateFromProps(nextProps, prevState) {
     const { photo, gameType, selectedRoom, payersCount, width, height } = nextProps;
     let { regions, wasCreated } = prevState;
 
@@ -32,36 +36,47 @@ class Regions extends Component {
         reg['height'] = 0;
         reg['top'] = 0;
         reg['left'] = 0;
-        reg['recognitionType'] = null;
-        reg['responseType'] = null;
+        reg['recognitionType'] = 0;
+        reg['responseType'] = 0;
 
         let obj = {};
+        let createEl = (name, recognitionType) => {
+            obj[name] = Object.create(reg);
+            obj[name].recognitionType = recognitionType;
+        };
 
         // players
         for(let i = 0; i < payersCount; i++) {
-          obj[`Player${i}_balance`] = Object.create(reg);
-          obj[`Player${i}_name`] = Object.create(reg);
-          obj[`Player${i}_isActive`] = Object.create(reg);
-          obj[`Player${i}_isDealer`] = Object.create(reg);
-          obj[`Player${i}_bet`] = Object.create(reg);
-          obj[`Player${i}_hole1`] = Object.create(reg);
-          obj[`Player${i}_hole2`] = Object.create(reg);
+            createEl(`Player${i}_balance`, 'money');
+            createEl(`Player${i}_name`, 'string');
+            createEl(`Player${i}_isActive`, 'active');
+            createEl(`Player${i}_isDealer`, 'dealer');
+            createEl(`Player${i}_bet`, 'money');
+            createEl(`Player${i}_hole1_value`, 'string');
+            createEl(`Player${i}_hole1_suit`, 'suit');
+            createEl(`Player${i}_hole2_value`, 'string');
+            createEl(`Player${i}_hole2_suit`, 'suit');
         }
 
         //table
-        obj['Pot'] = Object.create(reg);
-        obj['Card1'] = Object.create(reg);
-        obj['Card2'] = Object.create(reg);
-        obj['Card3'] = Object.create(reg);
-        obj['Card4'] = Object.create(reg);
-        obj['Card5'] = Object.create(reg);
+          createEl('Pot', 'money');
+          createEl('Card1_value', 'string');
+          createEl('Card1_suit', 'suit');
+          createEl('Card2_value', 'string');
+          createEl('Card2_suit', 'suit');
+          createEl('Card3_value', 'string');
+          createEl('Card3_suit', 'suit');
+          createEl('Card4_value', 'string');
+          createEl('Card4_suit', 'suit');
+          createEl('Card5_value', 'string');
+          createEl('Card5_suit', 'suit');
 
         //buttons
-        obj['isBet'] = Object.create(reg);
-        obj['isRaise'] = Object.create(reg);
-        obj['isCall'] = Object.create(reg);
-        obj['isCheck'] = Object.create(reg);
-        obj['isFold'] = Object.create(reg);
+          createEl('isBet', 'string');
+          createEl('isRaise', 'string');
+          createEl('isCall', 'string');
+          createEl('isCheck', 'string');
+          createEl('isFold', 'string');
 
         regions[selectedRoom][gameType]['regions'] = obj;
       }
@@ -82,6 +97,7 @@ class Regions extends Component {
         let list = document.querySelectorAll('.regions-menu li');
         let listAll = document.querySelectorAll('.all-regions ul:not(:first-child) li');
 
+        this.setState({activeRegion : ''});
         for(let i = 0; i < list.length; i++) {
             if (list[i] !== el) {
                 list[i].classList.remove('active');
@@ -130,40 +146,50 @@ class Regions extends Component {
       this.setState({activeRegion : ''});
     } else {
       let regions = document.querySelectorAll('.all-regions ul.regions li');
+
       for(let i = 0; i < regions.length; i++) {
         if (regions[i] !== el) {
           regions[i].classList.remove('active');
         }
       }
       el.classList.toggle('active');
+
+      let selectRec = document.querySelector('.recognitionType');
       if (el.classList.contains('active')) {
+        const { regions } = this.state;
+        const { selectedRoom, gameType }= this.props;
+
         this.setState({activeRegion : el.id});
-      } else {this.setState({activeRegion : ''})}
+        selectRec.style.top = this.getCoords(el).top + 'px';
+        selectRec.style.left = this.getCoords(el).left + 20 + 'px';
+        selectRec.value = this.state.regions[selectedRoom][gameType]['regions'][el.id].recognitionType;
+      } else {
+        this.setState({activeRegion : ''});
+      }
       this.setRegionType(el.id);
     }
   };
 
-  updateRecognizion = () => {
+    getCoords = elem => {
+        let box = elem.getBoundingClientRect();
 
-  };
+        return {
+            top: box.top - 98,
+            left: box.left + box.width
+        }
+    };
 
-  setRegionType = (id) => {
-    const { regions, active } = this.state;
-    const { payersCount, selectedRoom, gameType }= this.props;
-    let el = document.getElementById(id);
+  updateRegionProperties = (properties) => {
+      const { selectedRoom, gameType }= this.props;
+      const { regions, activeRegion } = this.state;
 
-    //regions[selectedRoom][gameType]['regions'][id]['recognitionType'] = 'string';
-
-
-    //el.appendChild(select);
-
-    console.log(id);
-    console.log(regions[selectedRoom][gameType]['regions'][id]['recognitionType']);
+      regions[selectedRoom][gameType]['regions'][activeRegion] = properties;
+      this.setState({ regions });
   };
 
 
   render() {
-    const { regions, active } = this.state;
+    const { regions, active, activeRegion } = this.state;
     const { payersCount, selectedRoom, gameType }= this.props;
     const playersList = this.state.list
                           .map((el, index) => <li id={`Player${index}`} key={index}>{`Player${index}`}</li>)
@@ -181,6 +207,7 @@ class Regions extends Component {
                               className="recognitionType"
                               defaultValue={0}
                               onChange={this.updateRecognizion}
+                              style={{display: activeRegion ? 'initial' : 'none'}}
                               >
                                 <option value="0" disabled hidden>Select recognition type</option>
                                 <option value="string">string</option>
@@ -191,36 +218,62 @@ class Regions extends Component {
                                 <option value="dealer">dealer</option>
                               </select>;
 
+    const regionsDiv = regions.hasOwnProperty(selectedRoom) &&
+                       regions[selectedRoom].hasOwnProperty(gameType) &&
+                       regions[selectedRoom][gameType].hasOwnProperty('regions') ?
+                        Object.keys(regions[selectedRoom][gameType]['regions'])
+                        .filter(key => activeRegion ? key.match(new RegExp(activeRegion, 'i')) : active ? key.match(new RegExp(active, 'i')) : true)
+                        .map((el, index) => <div
+                                              className={`${el} region-div`}
+                                              style={{width: regions[selectedRoom][gameType]['regions'][el].width,
+                                                      height: regions[selectedRoom][gameType]['regions'][el].height,
+                                                      top: regions[selectedRoom][gameType]['regions'][el].top,
+                                                      left: regions[selectedRoom][gameType]['regions'][el].left}}
+                                              key={index}></div>) : null;
+
     return (
-      <div className='all-regions' onClick={this.setActive}>
-        {selectRecognition}
-        <ul className='regions-menu'>
-          <li className='active'>Players</li>
-          <li>Table</li>
-          <li>Buttons</li>
-        </ul>
-        <ul className='players-list'>
-          {playersList}
-        </ul>
-        <ul className='playerRegions regions'>
-          {playerRegions}
-        </ul>
-        <ul className='table-list regions' style={{display: 'none'}}>
-          <li id={'Pot'}>Pot</li>
-          <li id={'Card1'}>Card1</li>
-          <li id={'Card2'}>Card2</li>
-          <li id={'Card3'}>Card3</li>
-          <li id={'Card4'}>Card4</li>
-          <li id={'Card5'}>Card5</li>
-        </ul>
-        <ul className='buttons-list regions' style={{display: 'none'}}>
-            <li id={'isFold'}>isFold</li>
-            <li id={'isCheck'}>isCheck</li>
-            <li id={'isCall'}>isCall</li>
-            <li id={'isRaise'}>isRaise</li>
-            <li id={'isBet'}>isBet</li>
-        </ul>
-      </div>
+      <>
+          <div className='all-regions' onClick={this.setActive}>
+              <ul className='regions-menu'>
+                  <li className='active'>Players</li>
+                  <li>Table</li>
+                  <li>Buttons</li>
+              </ul>
+              <ul className='players-list'>
+                  {playersList}
+              </ul>
+              <ul className='playerRegions regions'>
+                  {playerRegions}
+              </ul>
+              <ul className='table-list regions' style={{display: 'none'}}>
+                  <li id={'Pot'}>Pot</li>
+                  <li id={'Card1_value'}>Card1_value</li>
+                  <li id={'Card1_suit'}>Card1_suit</li>
+                  <li id={'Card2_value'}>Card2_value</li>
+                  <li id={'Card2_suit'}>Card2_suit</li>
+                  <li id={'Card3_value'}>Card3_value</li>
+                  <li id={'Card3_suit'}>Card3_suit</li>
+                  <li id={'Card4_value'}>Card4_value</li>
+                  <li id={'Card4_suit'}>Card4_suit</li>
+                  <li id={'Card5_value'}>Card5_value</li>
+                  <li id={'Card5_suit'}>Card5_suit</li>
+              </ul>
+              <ul className='buttons-list regions' style={{display: 'none'}}>
+                  <li id={'isFold'}>isFold</li>
+                  <li id={'isCheck'}>isCheck</li>
+                  <li id={'isCall'}>isCall</li>
+                  <li id={'isRaise'}>isRaise</li>
+                  <li id={'isBet'}>isBet</li>
+              </ul>
+              {selectRecognition}
+          </div>
+          {regionsDiv}
+          {activeRegion ? <MovementInterface
+                              activeRegion={activeRegion}
+                              updateRegionProperties={this.updateRegionProperties}
+                              regPropertie={regions[selectedRoom][gameType]['regions'][activeRegion]}
+                          /> : null}
+      </>
     );
   }
 }
