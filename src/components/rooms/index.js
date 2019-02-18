@@ -52,7 +52,7 @@ class Rooms extends Component {
 
 
   render() {
-    const { selectedRoom, gameType, payersCount, photo } = this.state;
+    const { selectedRoom, gameType, photo } = this.state;
     const isReady = selectedRoom && gameType;
 
     return (

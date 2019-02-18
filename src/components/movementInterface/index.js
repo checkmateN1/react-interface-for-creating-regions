@@ -5,11 +5,6 @@ import React, { Component } from 'react';
 import './style.scss';
 
 class MovementInterface extends Component {
-
-    state = {
-
-    };
-
     updateRegion = (e) => {
         let el = e.target;
         e.stopPropagation();
@@ -85,6 +80,7 @@ class MovementInterface extends Component {
                         </div>
                     </div>
                 </fieldset>
+                <span className='shift-x10'>shift key x10</span>
             </section>
         );
     }

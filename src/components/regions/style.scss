@@ -54,11 +54,56 @@
     }
   }
 }
-
-#download-config {
+.config-wrapper {
   position: absolute;
+  display: flex;
+  justify-content: space-between;
+  left: 650px;
   top: 600px;
-  left: 1000px;
-  width: 154px;
+
+  .upload-txt-wrapper {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: relative;
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .custom-file-upload {
+      display: inline-block;
+      margin: 0 20px;
+      flex-grow: 1;
+      border: 1px solid #ccc;
+      padding: 6px 12px;
+      padding-top: 9px;
+      cursor: pointer;
+      font-size: 12px;
+      color: lightgoldenrodyellow;
+    }
+
+    img {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 30px;
+      left: 50px;
+      opacity: 0;
+    }
+
+    input:hover + img {
+      display: block;
+      transition: 2s;
+      opacity: 1;
+    }
+  }
+
+  #download-config {
+    width: 154px;
+  }
 }
+
+
 

@@ -33,25 +33,25 @@ class Regions extends Component {
 
         let obj = {};
         let createEl = (name, recognitionType) => {
-            obj[name] = {};
-            obj[name].recognitionType = recognitionType;
-            obj[name].width = 0;
-            obj[name].height = 0;
-            obj[name].top = 0;
-            obj[name].left = 0;
+          obj[name] = {};
+          obj[name].recognitionType = recognitionType;
+          obj[name].width = 0;
+          obj[name].height = 0;
+          obj[name].top = 0;
+          obj[name].left = 0;
         };
 
         // players
         for(let i = 0; i < payersCount; i++) {
-            createEl(`Player${i}_balance`, 'money');
-            createEl(`Player${i}_name`, 'string');
-            createEl(`Player${i}_isActive`, 'active');
-            createEl(`Player${i}_isDealer`, 'dealer');
-            createEl(`Player${i}_bet`, 'money');
-            createEl(`Player${i}_hole1_value`, 'string');
-            createEl(`Player${i}_hole1_suit`, 'suit');
-            createEl(`Player${i}_hole2_value`, 'string');
-            createEl(`Player${i}_hole2_suit`, 'suit');
+          createEl(`Player${i}_balance`, 'money');
+          createEl(`Player${i}_name`, 'string');
+          createEl(`Player${i}_isActive`, 'active');
+          createEl(`Player${i}_isDealer`, 'dealer');
+          createEl(`Player${i}_bet`, 'money');
+          createEl(`Player${i}_hole1_value`, 'string');
+          createEl(`Player${i}_hole1_suit`, 'suit');
+          createEl(`Player${i}_hole2_value`, 'string');
+          createEl(`Player${i}_hole2_suit`, 'suit');
         }
 
         //table
@@ -90,41 +90,41 @@ class Regions extends Component {
     }
 
     if (el.parentNode.classList.contains('regions-menu')) {
-        let list = document.querySelectorAll('.regions-menu li');
-        let listAll = document.querySelectorAll('.all-regions ul:not(:first-child) li');
+      let list = document.querySelectorAll('.regions-menu li');
+      let listAll = document.querySelectorAll('.all-regions ul:not(:first-child) li');
 
-        this.setState({activeRegion : ''});
-        for(let i = 0; i < list.length; i++) {
-            if (list[i] !== el) {
-                list[i].classList.remove('active');
-            }
+      this.setState({activeRegion : ''});
+      for(let i = 0; i < list.length; i++) {
+        if (list[i] !== el) {
+            list[i].classList.remove('active');
         }
+      }
 
-        el.classList.add('active');
+      el.classList.add('active');
 
-        for(let i = 0; i < listAll.length; i++) {
-          listAll[i].classList.remove('active');
-        }
-        this.setState({active: ''});
+      for(let i = 0; i < listAll.length; i++) {
+        listAll[i].classList.remove('active');
+      }
+      this.setState({active: ''});
 
-        switch (el.innerText) {
-          case 'Players':
-            document.querySelector('.players-list').style.display = 'block';
-            document.querySelector('.table-list').style.display = 'none';
-            document.querySelector('.buttons-list').style.display = 'none';
-            break;
-          case 'Table':
-            document.querySelector('.players-list').style.display = 'none';
-            document.querySelector('.table-list').style.display = 'block';
-            document.querySelector('.buttons-list').style.display = 'none';
-            break;
-          case 'Buttons':
-            document.querySelector('.players-list').style.display = 'none';
-            document.querySelector('.table-list').style.display = 'none';
-            document.querySelector('.buttons-list').style.display = 'block';
-            break;
-          default:
-            break;
+      switch (el.innerText) {
+        case 'Players':
+          document.querySelector('.players-list').style.display = 'block';
+          document.querySelector('.table-list').style.display = 'none';
+          document.querySelector('.buttons-list').style.display = 'none';
+          break;
+        case 'Table':
+          document.querySelector('.players-list').style.display = 'none';
+          document.querySelector('.table-list').style.display = 'block';
+          document.querySelector('.buttons-list').style.display = 'none';
+          break;
+        case 'Buttons':
+          document.querySelector('.players-list').style.display = 'none';
+          document.querySelector('.table-list').style.display = 'none';
+          document.querySelector('.buttons-list').style.display = 'block';
+          break;
+        default:
+          break;
       }
       return false;
     }
@@ -152,7 +152,6 @@ class Regions extends Component {
 
       let selectRec = document.querySelector('.recognitionType');
       if (el.classList.contains('active')) {
-        const { regions } = this.state;
         const { selectedRoom, gameType }= this.props;
 
         this.setState({activeRegion : el.id});
@@ -165,41 +164,45 @@ class Regions extends Component {
     }
   };
 
-    getCoords = elem => {
-        let box = elem.getBoundingClientRect();
+  getCoords = elem => {
+    let box = elem.getBoundingClientRect();
 
-        return {
-            top: box.top - 98,
-            left: box.left + box.width
-        }
-    };
-
-  updateRegionProperties = (properties) => {
-      const { selectedRoom, gameType }= this.props;
-      const { regions, activeRegion } = this.state;
-
-      regions[selectedRoom][gameType]['regions'][activeRegion] = properties;
-      this.setState({ regions });
+    return {
+        top: box.top - 98,
+        left: box.left + box.width
+    }
   };
 
-    saveConfig = () => {
-        console.log(this.state.regions);
-        this.download('json_config', JSON.stringify(this.state.regions));
-    };
+  updateRegionProperties = (properties) => {
+    const { selectedRoom, gameType }= this.props;
+    const { regions, activeRegion } = this.state;
 
-    download = (filename, text) => {
-        console.log(text);
-        let pom = document.createElement('a');
-        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-        pom.setAttribute('download', filename);
+    regions[selectedRoom][gameType]['regions'][activeRegion] = properties;
+    this.setState({ regions });
+  };
 
-        pom.style.display = 'none';
-        document.body.appendChild(pom);
+  loadConfig = (regions) => {
+    this.setState({ regions });
+  };
 
-        pom.click();
+  saveConfig = () => {
+    console.log(this.state.regions);
+    this.download('json_config', JSON.stringify(this.state.regions));
+  };
 
-        document.body.removeChild(pom);
-    };
+  download = (filename, text) => {
+    console.log(text);
+    let pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    pom.style.display = 'none';
+    document.body.appendChild(pom);
+
+    pom.click();
+
+    document.body.removeChild(pom);
+  };
 
 
   render() {
@@ -243,52 +246,54 @@ class Regions extends Component {
                                                       height: regions[selectedRoom][gameType]['regions'][el].height,
                                                       top: regions[selectedRoom][gameType]['regions'][el].top,
                                                       left: regions[selectedRoom][gameType]['regions'][el].left}}
-                                              key={index}></div>) : null;
+                                              key={index}> </div>) : null;
 
     return (
       <>
-          <div className='all-regions' onClick={this.setActive}>
-              <ul className='regions-menu'>
-                  <li className='active'>Players</li>
-                  <li>Table</li>
-                  <li>Buttons</li>
-              </ul>
-              <ul className='players-list'>
-                  {playersList}
-              </ul>
-              <ul className='playerRegions regions'>
-                  {playerRegions}
-              </ul>
-              <ul className='table-list regions' style={{display: 'none'}}>
-                  <li id={'Pot'}>Pot</li>
-                  <li id={'Card1_value'}>Card1_value</li>
-                  <li id={'Card1_suit'}>Card1_suit</li>
-                  <li id={'Card2_value'}>Card2_value</li>
-                  <li id={'Card2_suit'}>Card2_suit</li>
-                  <li id={'Card3_value'}>Card3_value</li>
-                  <li id={'Card3_suit'}>Card3_suit</li>
-                  <li id={'Card4_value'}>Card4_value</li>
-                  <li id={'Card4_suit'}>Card4_suit</li>
-                  <li id={'Card5_value'}>Card5_value</li>
-                  <li id={'Card5_suit'}>Card5_suit</li>
-              </ul>
-              <ul className='buttons-list regions' style={{display: 'none'}}>
-                  <li id={'isFold'}>isFold</li>
-                  <li id={'isCheck'}>isCheck</li>
-                  <li id={'isCall'}>isCall</li>
-                  <li id={'isRaise'}>isRaise</li>
-                  <li id={'isBet'}>isBet</li>
-              </ul>
-              {selectRecognition}
-          </div>
-          {regionsDiv}
-          {activeRegion ? <MovementInterface
-                              activeRegion={activeRegion}
-                              updateRegionProperties={this.updateRegionProperties}
-                              regPropertie={regions[selectedRoom][gameType]['regions'][activeRegion]}
-                          /> : null}
-          <ConfigUpload />
+        <div className='all-regions' onClick={this.setActive}>
+          <ul className='regions-menu'>
+              <li className='active'>Players</li>
+              <li>Table</li>
+              <li>Buttons</li>
+          </ul>
+          <ul className='players-list'>
+              {playersList}
+          </ul>
+          <ul className='playerRegions regions'>
+              {playerRegions}
+          </ul>
+          <ul className='table-list regions' style={{display: 'none'}}>
+              <li id={'Pot'}>Pot</li>
+              <li id={'Card1_value'}>Card1_value</li>
+              <li id={'Card1_suit'}>Card1_suit</li>
+              <li id={'Card2_value'}>Card2_value</li>
+              <li id={'Card2_suit'}>Card2_suit</li>
+              <li id={'Card3_value'}>Card3_value</li>
+              <li id={'Card3_suit'}>Card3_suit</li>
+              <li id={'Card4_value'}>Card4_value</li>
+              <li id={'Card4_suit'}>Card4_suit</li>
+              <li id={'Card5_value'}>Card5_value</li>
+              <li id={'Card5_suit'}>Card5_suit</li>
+          </ul>
+          <ul className='buttons-list regions' style={{display: 'none'}}>
+              <li id={'isFold'}>isFold</li>
+              <li id={'isCheck'}>isCheck</li>
+              <li id={'isCall'}>isCall</li>
+              <li id={'isRaise'}>isRaise</li>
+              <li id={'isBet'}>isBet</li>
+          </ul>
+          {selectRecognition}
+        </div>
+        {regionsDiv}
+        {activeRegion ? <MovementInterface
+                            activeRegion={activeRegion}
+                            updateRegionProperties={this.updateRegionProperties}
+                            regPropertie={regions[selectedRoom][gameType]['regions'][activeRegion]}
+                        /> : null}
+        <div className='config-wrapper'>
+          <ConfigUpload loadConfig={this.loadConfig}/>
           <button onClick={this.saveConfig} id='download-config'>download json_config.txt</button>
+        </div>
       </>
     );
   }
