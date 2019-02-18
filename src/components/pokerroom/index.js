@@ -19,7 +19,7 @@ class Pokerroom extends Component {
         >
           <option value="0" disabled hidden>Select room</option>
           <option value="Pokerstars">Pokerstars</option>
-          <option value="Patypoker">Patypoker</option>
+          <option value="Partypoker">Partypoker</option>
           <option value="Winamax">Winamax</option>
         </select>
     );
