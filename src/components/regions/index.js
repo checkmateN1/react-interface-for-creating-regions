@@ -6,6 +6,7 @@ import './style.scss';
 
 //Components
 import MovementInterface from '../movementInterface';
+import ConfigUpload from '../configUpload';
 
 
 class Regions extends Component {
@@ -30,19 +31,14 @@ class Regions extends Component {
         regions[selectedRoom][gameType]['height'] = height;
         regions[selectedRoom][gameType]['regions'] = {};
 
-        let reg = {};
-
-        reg['width'] = 0;
-        reg['height'] = 0;
-        reg['top'] = 0;
-        reg['left'] = 0;
-        reg['recognitionType'] = 0;
-        reg['responseType'] = 0;
-
         let obj = {};
         let createEl = (name, recognitionType) => {
-            obj[name] = Object.create(reg);
+            obj[name] = {};
             obj[name].recognitionType = recognitionType;
+            obj[name].width = 0;
+            obj[name].height = 0;
+            obj[name].top = 0;
+            obj[name].left = 0;
         };
 
         // players
@@ -166,7 +162,6 @@ class Regions extends Component {
       } else {
         this.setState({activeRegion : ''});
       }
-      this.setRegionType(el.id);
     }
   };
 
@@ -186,6 +181,25 @@ class Regions extends Component {
       regions[selectedRoom][gameType]['regions'][activeRegion] = properties;
       this.setState({ regions });
   };
+
+    saveConfig = () => {
+        console.log(this.state.regions);
+        this.download('json_config', JSON.stringify(this.state.regions));
+    };
+
+    download = (filename, text) => {
+        console.log(text);
+        let pom = document.createElement('a');
+        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        pom.setAttribute('download', filename);
+
+        pom.style.display = 'none';
+        document.body.appendChild(pom);
+
+        pom.click();
+
+        document.body.removeChild(pom);
+    };
 
 
   render() {
@@ -273,6 +287,8 @@ class Regions extends Component {
                               updateRegionProperties={this.updateRegionProperties}
                               regPropertie={regions[selectedRoom][gameType]['regions'][activeRegion]}
                           /> : null}
+          <ConfigUpload />
+          <button onClick={this.saveConfig} id='download-config'>download json_config.txt</button>
       </>
     );
   }
