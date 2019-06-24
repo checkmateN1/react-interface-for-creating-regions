@@ -73,6 +73,7 @@ class Regions extends Component {
           createEl('isCall', 'string');
           createEl('isCheck', 'string');
           createEl('isFold', 'string');
+          createEl('betAmount', 'money');
 
         regions[selectedRoom][gameType]['regions'] = obj;
       }
@@ -281,6 +282,7 @@ class Regions extends Component {
               <li id={'isCall'}>isCall</li>
               <li id={'isRaise'}>isRaise</li>
               <li id={'isBet'}>isBet</li>
+              <li id={'betAmount'}>betAmount</li>
           </ul>
           {selectRecognition}
         </div>
