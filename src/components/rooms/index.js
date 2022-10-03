@@ -12,7 +12,6 @@ import Regions from '../regions';
 
 
 class Rooms extends Component {
-
   state = {
     rooms: {},
     selectedRoom: '',
@@ -21,6 +20,8 @@ class Rooms extends Component {
     photo: '',
     width: '',
     height: '',
+    imageType: '',
+    zoomX: 1,
   };
 
   setSelectedRoom = (selectedRoom) => {this.setState({selectedRoom})};
@@ -49,6 +50,8 @@ class Rooms extends Component {
   setPhoto = (photo) => {this.setState({photo})};
   setWidth = (width) => {this.setState({width})};
   setHeight = (height) => {this.setState({height})};
+  setImageType = (imageType) => {this.setState({imageType})};
+  setZoomX = (zoomX) => {this.setState({zoomX})};
 
 
   render() {
@@ -65,6 +68,8 @@ class Rooms extends Component {
               setPhoto={this.setPhoto}
               setWidth={this.setWidth}
               setHeight={this.setHeight}
+              setImageType={this.setImageType}
+              setZoomX={this.setZoomX}
               imgName={selectedRoom + '_' + gameType}
           />
           <div id='upload-wrapper'>

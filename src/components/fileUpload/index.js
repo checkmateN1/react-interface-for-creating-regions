@@ -4,13 +4,42 @@ import React, { Component } from 'react';
 // Instruments
 import './style.scss';
 
-
 class FileUpload extends Component {
-
   state = {
     fileName: 'Upload table image',
     imgSrc: '',
+    imgWidth: 0,
+    imgHeight: 0,
+    is4k: '',
   };
+
+  tablesCountHandler = (e) => {
+    const value = e.currentTarget.value;
+
+    this.props.setImageType(value);
+    this.setState({
+      is4k: value === '4k'
+    })
+  }
+
+  regionTypeHandler = (e) => {
+    const value = e.currentTarget.value;
+
+    this.props.setImageType(value);
+    this.setState({
+      is4k: value === '4k'
+    })
+  }
+
+  zoomHandler = (e) => {
+    let el = document.getElementById('upload-wrapper');
+    const value = e.currentTarget.value;
+
+    el.style.width = `${img.width}px`;
+    el.style.height = `${img.height}px`;
+  }
+
+
 
   fileSelectedHandler = event => {
     // check size
@@ -90,6 +119,14 @@ class FileUpload extends Component {
               onClick={this.loadDefaultPic}
               style={this.props.isReady ? {display: 'block'} : {display: 'none'}}
           >Load default table img</button>
+          <div onChange={this.regionTypeHandler}>
+            <input type="radio" value="4k" name="imageType"/> 4k
+            <input type="radio" value="table" name="imageType"/> table
+          </div>
+          <div onChange={this.tablesCountHandler}>
+            <input type="radio" value="6" name="tablesCount"/> 6 tables
+            <input type="radio" value="9" name="tablesCount"/> 9 tables
+          </div>
         </div>
     );
   }

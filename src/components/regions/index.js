@@ -182,13 +182,14 @@ class Regions extends Component {
     this.setState({ regions });
   };
 
-  loadConfig = (regions) => {
-    this.setState({ regions });
+  loadConfig = (config) => {
+    const { rooms } = config;
+    this.setState({ regions: rooms });
   };
 
   saveConfig = () => {
     console.log(this.state.regions);
-    this.download('json_config', JSON.stringify(this.state.regions));
+    this.download('json_config', JSON.stringify({rooms: this.state.regions}));
   };
 
   download = (filename, text) => {
