@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd4d6c9-4ad4-4021-86db-11046b03e02d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/configUpload/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/configUpload/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/fileUpload/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileUpload/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/regions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/regions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileUpload/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileUpload/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/regions/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/regions/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/rooms/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rooms/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/rooms/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rooms/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +29,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -111,7 +118,7 @@
       <workItem from="1579097182683" duration="752000" />
       <workItem from="1617535564109" duration="1040000" />
       <workItem from="1617561202313" duration="11000" />
-      <workItem from="1664658066846" duration="14782000" />
+      <workItem from="1664658066846" duration="22787000" />
     </task>
     <servers />
   </component>

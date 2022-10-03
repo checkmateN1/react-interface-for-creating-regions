@@ -1,11 +1,24 @@
 @import '../../sass/variables';
 
 .upload-wrapper {
-  width: 400px;
+  width: 1500px;
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
   position: relative;
+
+  div {
+    margin-right: 11px;
+    border: 1px solid #2e2e6c;
+  }
+
+  .zoomPlus {
+    margin-left: 10px;
+  }
+
+  .zoomMinus {
+    margin-right: 10px;
+  }
 
   input[type="file"] {
     display: none;
@@ -18,7 +31,7 @@
     border: 1px solid #ccc;
     padding: 6px 12px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px;
     color: lightgoldenrodyellow;
   }
 

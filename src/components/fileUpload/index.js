@@ -1,5 +1,6 @@
 // Core
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // Instruments
 import './style.scss';
@@ -8,35 +9,45 @@ class FileUpload extends Component {
   state = {
     fileName: 'Upload table image',
     imgSrc: '',
-    imgWidth: 0,
-    imgHeight: 0,
-    is4k: '',
   };
 
   tablesCountHandler = (e) => {
-    const value = e.currentTarget.value;
+    const value = e.target.value;
 
-    this.props.setImageType(value);
-    this.setState({
-      is4k: value === '4k'
-    })
+    console.log(value);
+    this.props.setTablesCount(value);
   }
 
   regionTypeHandler = (e) => {
-    const value = e.currentTarget.value;
+    const value = e.target.value;
+
+    console.log(value);
 
     this.props.setImageType(value);
-    this.setState({
-      is4k: value === '4k'
-    })
+
+    console.log(value === '4k' ? '4k' : 'table');
   }
 
   zoomHandler = (e) => {
     let el = document.getElementById('upload-wrapper');
-    const value = e.currentTarget.value;
+    const value = e.target.value;
 
-    el.style.width = `${img.width}px`;
-    el.style.height = `${img.height}px`;
+    let zoomX = this.props.zoomX;
+
+    if (value === '+') {
+      console.log('zoom+')
+      zoomX *= 2;
+    } else {
+      zoomX /= 2;
+    }
+
+    this.props.setZoomX(zoomX);
+
+    el.style.backgroundSize = `${100 * zoomX}%`
+    // el.style.backgroundPositionX = `${img.width}px`;
+    // el.style.backgroundPositionY = `${img.height}px`;
+    // el.style.width = `${this.props.width * zoomX}px`;
+    // el.style.height = `${this.props.height * zoomX}px`;
   }
 
 
@@ -98,6 +109,9 @@ class FileUpload extends Component {
   };
 
   render() {
+    const zoomX = this.props.zoomX;
+    const is4k = this.props.is4k;
+    const tableCount = this.props.tableCount;
 
     return (
         <div className='upload-wrapper'>
@@ -120,17 +134,32 @@ class FileUpload extends Component {
               style={this.props.isReady ? {display: 'block'} : {display: 'none'}}
           >Load default table img</button>
           <div onChange={this.regionTypeHandler}>
-            <input type="radio" value="4k" name="imageType"/> 4k
-            <input type="radio" value="table" name="imageType"/> table
+            <input type="radio" value="4k" name="imageType" defaultChecked={is4k}/> 4k
+            <input type="radio" value="table" name="imageType" defaultChecked={!is4k}/> table
           </div>
           <div onChange={this.tablesCountHandler}>
-            <input type="radio" value="6" name="tablesCount"/> 6 tables
-            <input type="radio" value="9" name="tablesCount"/> 9 tables
+            <input type="radio" value="6" name="tablesCount" defaultChecked={tableCount === '6'}/> 6 tables
+            <input type="radio" value="9" name="tablesCount" defaultChecked={tableCount === '9'}/> 9 tables
+          </div>
+          <div onClick={this.zoomHandler}>
+            <label htmlFor="zoom">{zoomX + 'x'}</label>
+            <input type='button' className='zoomPlus' value="+" name="zoom"/>
+            <input type='button' className='zoomMinus' value="-" name="zoom"/>
+            <label htmlFor="zoom">zoom</label>
           </div>
         </div>
     );
   }
 }
+
+FileUpload.propTypes = {
+  setPhoto: PropTypes.func,
+  setWidth: PropTypes.func,
+  setHeight: PropTypes.func,
+  setImageType: PropTypes.func,
+  setZoomX: PropTypes.func,
+  setTablesCount: PropTypes.func,
+};
 
 export default FileUpload;
 

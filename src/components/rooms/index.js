@@ -22,6 +22,8 @@ class Rooms extends Component {
     height: '',
     imageType: '',
     zoomX: 1,
+    is4k: false,
+    tableCount: '6',
   };
 
   setSelectedRoom = (selectedRoom) => {this.setState({selectedRoom})};
@@ -52,6 +54,8 @@ class Rooms extends Component {
   setHeight = (height) => {this.setState({height})};
   setImageType = (imageType) => {this.setState({imageType})};
   setZoomX = (zoomX) => {this.setState({zoomX})};
+  set4k = (is4k) => {this.setState({is4k})};
+  setTablesCount = (tableCount) => {this.setState({tableCount})};
 
 
   render() {
@@ -70,7 +74,9 @@ class Rooms extends Component {
               setHeight={this.setHeight}
               setImageType={this.setImageType}
               setZoomX={this.setZoomX}
+              setTablesCount={this.setTablesCount}
               imgName={selectedRoom + '_' + gameType}
+              {...this.state}
           />
           <div id='upload-wrapper'>
             {isReady && photo ? <Regions {...this.state} /> : null}
