@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2dd4d6c9-4ad4-4021-86db-11046b03e02d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/configUpload/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/configUpload/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/fileUpload/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileUpload/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/fileUpload/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileUpload/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/regions/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/regions/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pokerroom/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pokerroom/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pokertype/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pokertype/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/regions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/regions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/rooms/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rooms/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +77,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -118,7 +117,8 @@
       <workItem from="1579097182683" duration="752000" />
       <workItem from="1617535564109" duration="1040000" />
       <workItem from="1617561202313" duration="11000" />
-      <workItem from="1664658066846" duration="22787000" />
+      <workItem from="1664658066846" duration="24603000" />
+      <workItem from="1665747891227" duration="13561000" />
     </task>
     <servers />
   </component>

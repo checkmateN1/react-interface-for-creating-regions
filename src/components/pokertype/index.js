@@ -25,6 +25,7 @@ class Pokertype extends Component {
           <option value="Cash 9max">Cash 9max</option>
           <option value="HA">HA</option>
           <option value="MTT">MTT</option>
+          <option value="Omaha">Omaha</option>
         </select>
     );
   }

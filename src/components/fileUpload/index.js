@@ -137,10 +137,10 @@ class FileUpload extends Component {
             <input type="radio" value="4k" name="imageType" defaultChecked={is4k}/> 4k
             <input type="radio" value="table" name="imageType" defaultChecked={!is4k}/> table
           </div>
-          <div onChange={this.tablesCountHandler}>
-            <input type="radio" value="6" name="tablesCount" defaultChecked={tableCount === '6'}/> 6 tables
-            <input type="radio" value="9" name="tablesCount" defaultChecked={tableCount === '9'}/> 9 tables
-          </div>
+          {/*<div onChange={this.tablesCountHandler}>*/}
+          {/*  <input type="radio" value="6" name="tablesCount" defaultChecked={tableCount === '6'}/> 6 tables*/}
+          {/*  <input type="radio" value="9" name="tablesCount" defaultChecked={tableCount === '9'}/> 9 tables*/}
+          {/*</div>*/}
           <div onClick={this.zoomHandler}>
             <label htmlFor="zoom">{zoomX + 'x'}</label>
             <input type='button' className='zoomPlus' value="+" name="zoom"/>

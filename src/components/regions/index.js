@@ -42,38 +42,36 @@ class Regions extends Component {
         };
 
         // players
-        for(let i = 0; i < payersCount; i++) {
-          createEl(`Player${i}_balance`, 'money');
-          createEl(`Player${i}_name`, 'string');
-          createEl(`Player${i}_isActive`, 'active');
-          createEl(`Player${i}_isDealer`, 'dealer');
-          createEl(`Player${i}_bet`, 'money');
-          createEl(`Player${i}_hole1_value`, 'string');
-          createEl(`Player${i}_hole1_suit`, 'suit');
-          createEl(`Player${i}_hole2_value`, 'string');
-          createEl(`Player${i}_hole2_suit`, 'suit');
+        for(let i = 0; i < payersCount; i++) {      // создаем регионы для каждого из игроков
+          createEl(`Player${i}_balance`, 'number');
+          createEl(`Player${i}_name`, 'nickname');
+          createEl(`Player${i}_isActive`, 'color');
+          createEl(`Player${i}_isDealer`, 'color');
+          createEl(`Player${i}_bet`, 'number');
+          createEl(`Player${i}_hole1_value`, 'card');   // карты игрока(2 штуки)
+          createEl(`Player${i}_hole1_suit`, 'color');
+          createEl(`Player${i}_hole2_value`, 'card');
+          createEl(`Player${i}_hole2_suit`, 'color');
         }
 
         //table
-          createEl('Pot', 'money');
-          createEl('Card1_value', 'string');
-          createEl('Card1_suit', 'suit');
-          createEl('Card2_value', 'string');
-          createEl('Card2_suit', 'suit');
-          createEl('Card3_value', 'string');
-          createEl('Card3_suit', 'suit');
-          createEl('Card4_value', 'string');
-          createEl('Card4_suit', 'suit');
-          createEl('Card5_value', 'string');
-          createEl('Card5_suit', 'suit');
+          createEl('Pot', 'number');
+          createEl('Prepot', 'number');
+          createEl('Card1_value', 'card');    // Общие карты борда(5 штук)
+          createEl('Card1_suit', 'color');
+          createEl('Card2_value', 'card');
+          createEl('Card2_suit', 'color');
+          createEl('Card3_value', 'card');
+          createEl('Card3_suit', 'color');
+          createEl('Card4_value', 'card');
+          createEl('Card4_suit', 'color');
+          createEl('Card5_value', 'card');
+          createEl('Card5_suit', 'color');
 
         //buttons
-          createEl('isBet', 'string');
-          createEl('isRaise', 'string');
-          createEl('isCall', 'string');
-          createEl('isCheck', 'string');
-          createEl('isFold', 'string');
-          createEl('betAmount', 'money');
+          createEl('isBet', 'color');
+          createEl('isRaise', 'color');
+          createEl('isCall', 'color');
 
         regions[selectedRoom][gameType]['regions'] = obj;
       }
@@ -229,12 +227,11 @@ class Regions extends Component {
                               style={{display: activeRegion ? 'initial' : 'none'}}
                               >
                                 <option value="0" disabled hidden>Select recognition type</option>
-                                <option value="string">string</option>
-                                <option value="money">money</option>
+                                <option value="card">card</option>
                                 <option value="number">number</option>
-                                <option value="suit">suit</option>
-                                <option value="active">active</option>
-                                <option value="dealer">dealer</option>
+                                <option value="color">color</option>
+                                <option value="similarity">similarity</option>
+                                <option value="nickname">nickname</option>
                               </select>;
 
     const regionsDiv = regions.hasOwnProperty(selectedRoom) &&
@@ -279,11 +276,11 @@ class Regions extends Component {
           </ul>
           <ul className='buttons-list regions' style={{display: 'none'}}>
               <li id={'isFold'}>isFold</li>
-              <li id={'isCheck'}>isCheck</li>
+              {/*<li id={'isCheck'}>isCheck</li>*/}
               <li id={'isCall'}>isCall</li>
               <li id={'isRaise'}>isRaise</li>
-              <li id={'isBet'}>isBet</li>
-              <li id={'betAmount'}>betAmount</li>
+              {/*<li id={'isBet'}>isBet</li>*/}
+              {/*<li id={'betAmount'}>betAmount</li>*/}
           </ul>
           {selectRecognition}
         </div>

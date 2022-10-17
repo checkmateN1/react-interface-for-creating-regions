@@ -18,6 +18,8 @@ class Pokerroom extends Component {
             onChange={this.updateRoom}
         >
           <option value="0" disabled hidden>Select room</option>
+          <option value="Redstar">Redstar</option>
+          <option value="gg">gg</option>
           <option value="Pokerstars">Pokerstars</option>
           <option value="Partypoker">Partypoker</option>
           <option value="Winamax">Winamax</option>

@@ -44,6 +44,9 @@ class Rooms extends Component {
         case 'MTT':
           this.setState({ payersCount: 6 });
           break;
+        case 'Omaha':
+          this.setState({ payersCount: 6 });
+          break;
         default:
           return 0;
       }
