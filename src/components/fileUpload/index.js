@@ -29,7 +29,7 @@ class FileUpload extends Component {
   }
 
   zoomHandler = (e) => {
-    let el = document.getElementById('upload-wrapper');
+    const el = document.getElementById('upload-wrapper');
     const value = e.target.value;
 
     let zoomX = this.props.zoomX;
@@ -44,6 +44,44 @@ class FileUpload extends Component {
     this.props.setZoomX(zoomX);
 
     el.style.backgroundSize = `${100 * zoomX}%`
+    // el.style.backgroundPositionX = `${img.width}px`;
+    // el.style.backgroundPositionY = `${img.height}px`;
+    // el.style.width = `${this.props.width * zoomX}px`;
+    // el.style.height = `${this.props.height * zoomX}px`;
+  }
+
+  zoomNavigation = (e) => {
+    const el = document.getElementById('upload-wrapper');
+    const value = e.target.value;
+    const isShift = e.shiftKey;
+
+    let { offsetZoomTop, offsetZoomLeft, zoomX, setZoomOffsetTop, setZoomOffsetLeft } = this.props;
+
+
+    if (value === 'top') {
+      console.log('top+');
+      const offset = offsetZoomTop + (isShift ? 20 : 1);
+      el.style.backgroundPositionY = `${offset}px`;
+      setZoomOffsetTop(offset);
+    } else if (value === 'left') {
+      console.log('left+');
+      const offset = offsetZoomLeft + (isShift ? 20 : 1);
+      el.style.backgroundPositionX = `${offset}px`;
+      setZoomOffsetLeft(offset)
+    } else if (value === 'right') {
+      console.log('bottom+');
+      const offset = offsetZoomLeft - (isShift ? 20 : 1);
+      el.style.backgroundPositionX = `${offset}px`;
+      setZoomOffsetLeft(offset);
+    } else if (value === 'bottom') {
+      console.log('bottom+');
+      const offset = offsetZoomTop - (isShift ? 20 : 1);
+      el.style.backgroundPositionY = `${offset}px`;
+      setZoomOffsetTop(offset);
+    }
+
+    // this.props.setZoomX(zoomX);
+    // el.style.backgroundSize = `${100 * zoomX}%`
     // el.style.backgroundPositionX = `${img.width}px`;
     // el.style.backgroundPositionY = `${img.height}px`;
     // el.style.width = `${this.props.width * zoomX}px`;
@@ -147,6 +185,14 @@ class FileUpload extends Component {
             <input type='button' className='zoomMinus' value="-" name="zoom"/>
             <label htmlFor="zoom">zoom</label>
           </div>
+          <div onClick={this.zoomNavigation}>
+            <label htmlFor="zoomNavigation">{}</label>
+            <input type='button' className='zoomNavigation' value="top" name="zoomNavigation"/>
+            <input type='button' className='zoomNavigation' value="left" name="zoomNavigation"/>
+            <input type='button' className='zoomNavigation' value="right" name="zoomNavigation"/>
+            <input type='button' className='zoomNavigation' value="bottom" name="zoomNavigation"/>
+            <label htmlFor="zoom">zoom</label>
+          </div>
         </div>
     );
   }
@@ -159,6 +205,8 @@ FileUpload.propTypes = {
   setImageType: PropTypes.func,
   setZoomX: PropTypes.func,
   setTablesCount: PropTypes.func,
+  setZoomOffsetTop: PropTypes.func,
+  setZoomOffsetLeft: PropTypes.func,
 };
 
 export default FileUpload;

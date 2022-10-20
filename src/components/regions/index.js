@@ -12,7 +12,7 @@ import ConfigUpload from '../configUpload';
 class Regions extends Component {
 
   state = {
-    list: [1,2,3,4,5,6,7,8,9],
+    list: [1,2,3,4,5,6,7,8,9], 
     active: '',
     activeRegion: '',
     regions: {},
@@ -52,6 +52,10 @@ class Regions extends Component {
           createEl(`Player${i}_hole1_suit`, 'color');
           createEl(`Player${i}_hole2_value`, 'card');
           createEl(`Player${i}_hole2_suit`, 'color');
+          createEl(`Player${i}_isThinking1`, 'color');
+          createEl(`Player${i}_isThinking2`, 'color');
+          createEl(`Player${i}_isWin1`, 'color');
+          createEl(`Player${i}_isWin2`, 'color');
         }
 
         //table
@@ -67,9 +71,11 @@ class Regions extends Component {
           createEl('Card4_suit', 'color');
           createEl('Card5_value', 'card');
           createEl('Card5_suit', 'color');
+          createEl('Limit', 'similarity');
+          createEl('TournamentX', 'similarity');
 
         //buttons
-          createEl('isBet', 'color');
+          createEl('isFold', 'color');
           createEl('isRaise', 'color');
           createEl('isCall', 'color');
 
@@ -263,6 +269,7 @@ class Regions extends Component {
           </ul>
           <ul className='table-list regions' style={{display: 'none'}}>
               <li id={'Pot'}>Pot</li>
+              <li id={'Prepot'}>Prepot</li>
               <li id={'Card1_value'}>Card1_value</li>
               <li id={'Card1_suit'}>Card1_suit</li>
               <li id={'Card2_value'}>Card2_value</li>
@@ -273,6 +280,8 @@ class Regions extends Component {
               <li id={'Card4_suit'}>Card4_suit</li>
               <li id={'Card5_value'}>Card5_value</li>
               <li id={'Card5_suit'}>Card5_suit</li>
+              <li id={'Limit'}>Limit</li>
+              <li id={'TournamentX'}>TournamentX</li>
           </ul>
           <ul className='buttons-list regions' style={{display: 'none'}}>
               <li id={'isFold'}>isFold</li>

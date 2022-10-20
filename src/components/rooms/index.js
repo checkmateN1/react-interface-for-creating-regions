@@ -23,7 +23,9 @@ class Rooms extends Component {
     imageType: '',
     zoomX: 1,
     is4k: false,
-    tableCount: '6',
+    tableCount: '9',
+    offsetZoomTop: 0,
+    offsetZoomLeft: 0,
   };
 
   setSelectedRoom = (selectedRoom) => {this.setState({selectedRoom})};
@@ -59,6 +61,8 @@ class Rooms extends Component {
   setZoomX = (zoomX) => {this.setState({zoomX})};
   set4k = (is4k) => {this.setState({is4k})};
   setTablesCount = (tableCount) => {this.setState({tableCount})};
+  setZoomOffsetTop = (offsetZoomTop) => {this.setState({offsetZoomTop})};
+  setZoomOffsetLeft = (offsetZoomLeft) => {this.setState({offsetZoomLeft})};
 
 
   render() {
@@ -78,6 +82,8 @@ class Rooms extends Component {
               setImageType={this.setImageType}
               setZoomX={this.setZoomX}
               setTablesCount={this.setTablesCount}
+              setZoomOffsetTop={this.setZoomOffsetTop}
+              setZoomOffsetLeft={this.setZoomOffsetLeft}
               imgName={selectedRoom + '_' + gameType}
               {...this.state}
           />

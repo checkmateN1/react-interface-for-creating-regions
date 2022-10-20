@@ -4,9 +4,6 @@
     <list default="true" id="2dd4d6c9-4ad4-4021-86db-11046b03e02d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/fileUpload/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileUpload/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileUpload/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileUpload/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pokerroom/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pokerroom/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pokertype/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pokertype/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/regions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/regions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/rooms/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rooms/index.js" afterDir="false" />
     </list>
@@ -118,7 +115,7 @@
       <workItem from="1617535564109" duration="1040000" />
       <workItem from="1617561202313" duration="11000" />
       <workItem from="1664658066846" duration="24603000" />
-      <workItem from="1665747891227" duration="13561000" />
+      <workItem from="1665747891227" duration="32587000" />
     </task>
     <servers />
   </component>
